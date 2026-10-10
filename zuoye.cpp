@@ -28,4 +28,12 @@ int main()
         return 0;
     
 
-}    
+}    //git add .
+//git push
+
+
+/*       unsigened i=n;
+  un m=0;
+   while i>0 
+  m=m*10+i%10;
+   i=i/10;*/
