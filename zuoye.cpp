@@ -1,39 +1,75 @@
 #include <iostream>  
-
+#include <cstdlib>
 using namespace std;
-int main()
-{
+
+
+     int rollDice()
+    { int die1 = 1 + rand() % 6;
+    int die2 = 1 + rand() % 6;
+    int sum = die1 + die2;
+    cout << "player rolled " << die1 << " + " << die2 << " = " << sum << endl;	
+    return sum;
+    }
+
+    enum GameStatus { WIN, LOSE, PLAYING };
     
-    for (int i = 1; i <= 10000; i++)
+    int main()
     {
-        int t = i;
+        int sum, myPoint;
+        GameStatus status;
+        unsigned seed;
+        cout << "Please enter an unsigned integer: ";
+        cin >> seed;
+        srand(seed);
+        sum = rollDice();
 
+    
+    switch (sum)
+    {
+    case 7:
+    case 11:
+        status = WIN;
+        break;
+    case 2:
+    case 3:
+    case 12:
+        status = LOSE;
+        break;
+    default:
 
-        int low = t %10;
-        int high = (t / 10) % 10;
-        if (high >= low)
+        status = PLAYING;
+        myPoint = sum;
+        cout << "point is" << myPoint << endl;
+        break;
+    }
+    while (status == PLAYING)
+    {
+        sum = rollDice();
+        if (sum == myPoint)
         {
-            break;
+            status = WIN;
         }
-        if (high < low)
+        else if (sum == 7)
         {
-            cout << i << "   ,";
+            status = LOSE;
         }
-   
 
     }
-	 
-         
-        system("pause");
+         if (status ==WIN)
+         {
+             cout << "you win" << endl;
+         }
+         else
+         {
+             cout << "you lose" << endl;
+         }
+
+             
+     
+    
+
+    system("pause");
         return 0;
     
 
-}    //git add .
-//git push
-
-
-/*       unsigened i=n;
-  un m=0;
-   while i>0 
-  m=m*10+i%10;
-   i=i/10;*/
+}     
