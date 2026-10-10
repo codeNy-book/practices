@@ -2,7 +2,7 @@
 #include <cstdlib>
 using namespace std;
 
-
+//投掷问题
      int rollDice()
     { int die1 = 1 + rand() % 6;
     int die2 = 1 + rand() % 6;
